@@ -68,13 +68,13 @@ const GraphCard = () => {
 
   const getLineColor = (pm10Value) => {
     if (pm10Value <= 50) {
-      return 'green';
+      return 'green'; 
     } else if (pm10Value <= 100) {
-      return 'yellow';
+      return 'yellow'; 
     } else if (pm10Value <= 150) {
-      return 'orange';
+      return 'orange'; 
     } else {
-      return 'red';
+      return 'red'; 
     }
   };
 
@@ -86,7 +86,7 @@ const GraphCard = () => {
         cx={cx}
         cy={cy}
         r={4}
-        fill={getLineColor(payload.PM10)} 
+        fill={getLineColor(payload.PM10)} // Set the dot color based on PM10 data
         stroke={stroke}
       />
     );
@@ -95,7 +95,7 @@ const GraphCard = () => {
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        // Clicked outside the popup, close it
+        
         setShowSearchPopup(false);
       }
     };
@@ -104,10 +104,11 @@ const GraphCard = () => {
     if (showSearchPopup) {
       document.addEventListener('mousedown', handleOutsideClick);
     } else {
-      
+     
       document.removeEventListener('mousedown', handleOutsideClick);
     }
 
+    
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
@@ -485,10 +486,10 @@ const GraphCard = () => {
               placeholder="Search..."
               className="border border-gray-300 rounded p-2 mb-4"
             />
-            {/* Add more input/select elements for user interaction */}
+            
             <button
               onClick={() => {
-                // Handle the selected options and close the pop-up
+                
                 setShowSearchPopup(false);
               }}
               className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600"
