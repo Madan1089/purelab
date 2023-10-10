@@ -68,13 +68,13 @@ const GraphCard = () => {
 
   const getLineColor = (pm10Value) => {
     if (pm10Value <= 50) {
-      return 'green'; // Good (Green)
+      return 'green';
     } else if (pm10Value <= 100) {
-      return 'yellow'; // Moderate (Yellow)
+      return 'yellow';
     } else if (pm10Value <= 150) {
-      return 'orange'; // Unhealthy for Sensitive Groups (Orange)
+      return 'orange';
     } else {
-      return 'red'; // Very Unhealthy or Hazardous (Red)
+      return 'red';
     }
   };
 
@@ -86,7 +86,7 @@ const GraphCard = () => {
         cx={cx}
         cy={cy}
         r={4}
-        fill={getLineColor(payload.PM10)} // Set the dot color based on PM10 data
+        fill={getLineColor(payload.PM10)} 
         stroke={stroke}
       />
     );
@@ -100,15 +100,14 @@ const GraphCard = () => {
       }
     };
 
-    // Attach the event listener when the popup is open
+    
     if (showSearchPopup) {
       document.addEventListener('mousedown', handleOutsideClick);
     } else {
-      // Remove the event listener when the popup is closed
+      
       document.removeEventListener('mousedown', handleOutsideClick);
     }
 
-    // Cleanup the event listener on component unmount
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
